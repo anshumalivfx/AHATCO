@@ -4,6 +4,7 @@
 
 #include "../include/main.h"
 #include "../include/lexer.h"
+#include "../include/parser.h"
 
 
 int main(int argc, const char* argv[]){
@@ -11,11 +12,10 @@ int main(int argc, const char* argv[]){
             "var a = \"Hello World\";\n"
             "ALog(a);\n"
             );
+    parser_T* parser = init_parser(lexer);
+    ast_T* root = parser_parse(parser);
 
-    TOKEN_t* token = (void*)0;
-
-    while((token = lexer_get_next_token(lexer)) != (void*)0){
-        printf("TOK(%d, %s) \n", token->type, token->value);
-    }
+    printf("%d\n",root->type);
+    printf("%zu\n", root->compound_size);
     return 0;
 }

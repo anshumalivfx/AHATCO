@@ -23,5 +23,8 @@ ast_T* init_ast(int type){
     // AST_STRING
     ast->string_value = (void*)0;
 
+    // AST_COMPOUND
+    ast->compound_value = (void*)0;
+    ast->compound_size = 0;
     return ast;
 }

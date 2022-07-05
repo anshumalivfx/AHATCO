@@ -7,13 +7,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 typedef struct AST_STRUCT {
     enum {
         AST_VARIABLE_DEFINITION,
         AST_VARIABLE,
         AST_FUNCTION_CALL,
-        AST_STRING
+        AST_STRING,
+        AST_COMPOUND
     } type;
 
     // VARIABLE DEFINITION NAME
@@ -30,6 +32,11 @@ typedef struct AST_STRUCT {
 
     // AST_STRING
     char* string_value;
+
+    // AST_COMPUND
+
+    struct AST_STRUCT** compound_value;
+    size_t compound_size;
 } ast_T;
 
 ast_T* init_ast(int type);
