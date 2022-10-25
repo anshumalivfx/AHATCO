@@ -1,2 +1,1 @@
-var name = "Anshumali Karna";
-ALog(name);
+ALog("Hello World");
